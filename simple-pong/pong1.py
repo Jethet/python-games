@@ -27,8 +27,41 @@ player_b.penup()
 player_b.goto(350, 0)
 
 # Ball
+ball = turtle.Turtle()
+ball.speed(0)  #speed of animation, set to maximum
+ball.shape("square")
+ball.color("white")
+ball.penup()
+ball.goto(0, 0)
 
+# Define player_a function
+def player_a_up():
+  y = player_a.ycor()
+  y += 20
+  player_a.sety(y)
 
+def player_a_down():
+  y = player_a.ycor()
+  y -= 20
+  player_a.sety(y)
+  
+# Define player_b function
+def player_b_up():
+  y = player_b.ycor()
+  y += 20
+  player_b.sety(y)
+
+def player_b_down():
+  y = player_b.ycor()
+  y -= 20
+  player_b.sety(y)
+
+# Keyboard binding
+win.listen()
+win.onkeypress(player_a_up, "1")
+win.onkeypress(player_a_down, "2")
+win.onkeypress(player_b_up, "9")
+win.onkeypress(player_b_down, "0")
 # Main loop
 while True:
   win.update()
