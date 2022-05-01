@@ -33,6 +33,9 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
+ball.dx = 2
+ball.dy = -2
+
 
 # Define player_a function
 def player_a_up():
@@ -62,8 +65,20 @@ win.onkeypress(player_a_up, "1")
 win.onkeypress(player_a_down, "2")
 win.onkeypress(player_b_up, "9")
 win.onkeypress(player_b_down, "0")
+
 # Main loop
 while True:
   win.update()
   
+  # Move the ball
+  ball.setx(ball.xcor() + ball.dx)
+  ball.sety(ball.ycor() + ball.dy)
 
+  # Set border (screen height 600, ball 20x20, means border is 290 up or 290 down)
+  if ball.ycor() > 290:
+    ball.sety(290)
+    ball.dy *= -1  #reverses the direction
+    
+  if ball.ycor() < -290:
+    ball.sety(-290)
+    ball.dy *= -1
