@@ -73,7 +73,7 @@ while True:
   # Move the ball
   ball.setx(ball.xcor() + ball.dx)
   ball.sety(ball.ycor() + ball.dy)
-
+  
   # Set border (screen height 600, ball 20x20, means border is 290 up or 290 down)
   if ball.ycor() > 290:
     ball.sety(290)
@@ -82,3 +82,13 @@ while True:
   if ball.ycor() < -290:
     ball.sety(-290)
     ball.dy *= -1
+    
+  # Set border (screen width 800, ball 20x20, means border is 390 up or 390 down)
+  if ball.xcor() > 390:
+    ball.setx(390)
+    ball.dx *= -1
+    
+  if ball.xcor() < -390:
+    ball.setx(-390)
+    ball.dx *= -1  
+  
