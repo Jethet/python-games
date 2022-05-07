@@ -1,4 +1,5 @@
 import turtle
+import os
 
 win = turtle.getscreen()
 
@@ -90,10 +91,13 @@ while True:
   if ball.ycor() > 290:
     ball.sety(290)
     ball.dy *= -1  #reverses the direction
+    os.system("afplay pong.wav&")
     
   if ball.ycor() < -290:
     ball.sety(-290)
     ball.dy *= -1
+    os.system("afplay pong.wav&")
+
     
   # Set border (screen width 800, ball 20x20, means border is 390 up or 390 down)
   if ball.xcor() > 390:
@@ -116,8 +120,12 @@ while True:
   if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < player_b.ycor() + 40 and ball.ycor() > player_b.ycor() -40):
     ball.setx(340)
     ball.dx *= -1
+    os.system("afplay pong.wav&")
+
       
   if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < player_a.ycor() + 40 and ball.ycor() > player_a.ycor() -40):
       ball.setx(-340)
       ball.dx *= -1
+      os.system("afplay pong.wav&")
+
     
