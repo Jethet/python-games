@@ -85,10 +85,19 @@ while True:
     
   # Set border (screen width 800, ball 20x20, means border is 390 up or 390 down)
   if ball.xcor() > 390:
-    ball.setx(390)
+    ball.goto(0, 0)
     ball.dx *= -1
     
   if ball.xcor() < -390:
-    ball.setx(-390)
+    ball.goto(0, 0)
     ball.dx *= -1  
   
+  # Paddle and ball collisions: ball hits between top and bottom of player square
+  if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < player_b.ycor() + 40 and ball.ycor() > player_b.ycor() -40):
+    ball.setx(340)
+    ball.dx *= -1
+      
+  if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < player_a.ycor() + 40 and ball.ycor() > player_a.ycor() -40):
+      ball.setx(-340)
+      ball.dx *= -1
+    
