@@ -1,4 +1,3 @@
-from tkinter.tix import COLUMN
 import numpy as np
 
 ROW_COUNT = 6
@@ -9,19 +8,22 @@ def create_board():
   return board
 
 def drop_piece(board, row, col, piece):
-  board[row][col] == piece
+  board[row][col] = piece
 
 def is_valid_location(board, col):
-  # board has six rows, 0 to 6, so top row is 5
-  return board[5][col]
+  # board has six rows, 0 to 6, bottom is 0 and top row is 5
+  return board[5][col] == 0
 
 def get_next_open_row(board, col):
   for r in range(ROW_COUNT):
     if board[r][col] == 0:
       return r
-  
+
+def print_board(board):
+  print (np.flip(board, 0))   # numpy command to flip top and bottom
+
 board = create_board()
-print(board)
+print_board(board)
 
 game_over = False
 turn = 0
@@ -45,8 +47,9 @@ while not game_over:
       row = get_next_open_row(board, col)
       drop_piece(board, row, col, 2)
 
+  print_board(board)
+  
   # to alternate between 0 and 1: increase turn and use modular to get 0 or 1
   turn += 1
   turn = turn % 2
 
-print(board)
