@@ -1,4 +1,6 @@
+from turtle import width
 import numpy as np
+import pygame
 
 ROW_COUNT = 6
 COLUMN_COUNT = 7
@@ -54,6 +56,16 @@ print_board(board)
 
 game_over = False
 turn = 0
+
+pygame.init()
+
+SQUARESIZE = 100
+width = COLUMN_COUNT * SQUARESIZE
+height = (ROW_COUNT + 1) * SQUARESIZE    # extra row at the top to show ball
+
+size = (width, height)
+screen = pygame.display.set_mode(size)
+
 
 while not game_over:
   # ask player 1 input
