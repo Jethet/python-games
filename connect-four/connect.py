@@ -111,10 +111,9 @@ while not game_over:
             game_over = True
        
       else:
-        if turn == 0:
-          posx = event.pos[0]
-          col = int(math.floor(posx/SQUARESIZE))
-              
+        posx = event.pos[0]
+        col = int(math.floor(posx/SQUARESIZE))
+            
         if is_valid_location(board, col):
           row = get_next_open_row(board, col)
           drop_piece(board, row, col, 2)
