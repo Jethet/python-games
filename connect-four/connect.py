@@ -2,6 +2,8 @@ import numpy as np
 import pygame
 import sys
 
+BLUE = (0,0,255)
+BLACK = (0,0,0)
 ROW_COUNT = 6
 COLUMN_COUNT = 7
 
@@ -51,7 +53,13 @@ def winning_move(board, piece):
         return True
 
 def draw_board(board):
-    pass
+  for c in range(COLUMN_COUNT):
+    for r in range(ROW_COUNT):
+      # draw a blue rectangle, with black banner on top (= extra squaresize in r*squaresize+squaresize)
+      pygame.draw.rect(screen, BLUE, (c*SQUARESIZE, r*SQUARESIZE+SQUARESIZE, SQUARESIZE, SQUARESIZE))
+      # draw a black circle for every position inside the blue rectangle
+      pygame.draw.circle(screen, BLACK, (c*SQUARESIZE+SQUARESIZE/2, r*SQUARESIZE+SQUARESIZE+ SQUARESIZE/2), RADIUS)
+      
 
 board = create_board()
 print_board(board)
@@ -64,9 +72,13 @@ pygame.init()
 SQUARESIZE = 100
 width = COLUMN_COUNT * SQUARESIZE
 height = (ROW_COUNT + 1) * SQUARESIZE    # extra row at the top to show ball
-
 size = (width, height)
+
+RADIUS = int(SQUARESIZE/2 - 5)  #circles slightly smaller than black square so they are not touching
+
 screen = pygame.display.set_mode(size)
+draw_board(board)
+pygame.display.update()
 
 while not game_over:
   
