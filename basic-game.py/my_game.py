@@ -4,7 +4,7 @@ import itertools
 pygame.init()
 
 # set up drawing window
-screen = pygame.display.set_mode((500, 500))
+screen = pygame.display.set_mode((800, 600))
 colors = itertools.cycle(["blue", "purple", "red", "orange",
                           "green", "yellow"])
 clock = pygame.time.Clock()
@@ -30,7 +30,7 @@ while running:
             running = False
 
     text = font.render(
-        "Fading {a} to {b}".format(a=base_color, b=next_color),
+        "fading {a} to {b}".format(a=base_color, b=next_color),
         True,
         pygame.color.Color("black"),
     )
