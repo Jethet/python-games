@@ -18,7 +18,8 @@ change_every_x_seconds = 3.0  # why the dot?
 number_of_steps = change_every_x_seconds * FPS
 step = 1
 
-font = pygame.font.SysFont("Arial", 50)
+font1 = pygame.font.SysFont("Arial", 50)
+font2 = pygame.font.SysFont("Arial", 40, italic=True)
 
 # run until user asks to quit
 running = True
@@ -29,11 +30,15 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    text = font.render(
+    text1 = font1.render(
         "fading {a} to {b}".format(a=base_color, b=next_color),
         True,
         pygame.color.Color("black"),
     )
+    text2 = font2.render(
+      "this was built with pygame",
+      True,
+      pygame.color.Color("black"))
 
     step += 1
     # formula to fade old color to new color
@@ -59,7 +64,8 @@ while running:
     """
     pygame.draw.circle(screen, current_color,
                        screen.get_rect().center, 100)
-    screen.blit(text, (230, 100))
+    screen.blit(text1, (180, 100))
+    screen.blit(text2, (180, 450))
 
     # to make this appear on your screen:
     pygame.display.update()
