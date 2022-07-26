@@ -20,7 +20,7 @@ import sys
 # )
 
 pygame.init()
-
+pygame.display.set_caption("codewoman obstacles")
 # setting up display
 size = width, height = 800, 800
 speed = [1, 1]

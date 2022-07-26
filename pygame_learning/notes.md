@@ -12,6 +12,8 @@
   * `pygame.init()` (initialise pygame and all included modules, ready to work)
   * always close the game with `pygame.quit()`
 
+* with `pygame.display.set_caption("name")` you can add a name to the game window
+
 * pygame classes:
   * `Surface`
     * a pygame object for representing images
