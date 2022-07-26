@@ -23,12 +23,12 @@ pygame.init()
 
 # setting up display
 size = width, height = 800, 800
-speed = [2, 2]
+speed = [1, 1]
 black = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
 
-logo = pygame.image.load("codewoman")
+logo = pygame.image.load("codewoman.png")
 logorect = logo.get_rect()
 
 while 1:
