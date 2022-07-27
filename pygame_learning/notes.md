@@ -38,7 +38,11 @@ Most used:
   while run:
     # do something
   ```
+  * an event is anything that happens from the user (click, mousemove, etc.)
   * with `pygame.time.delay()` you can control the speed of the game
+  * the window's starting point is 0, 0: the top left corner of the window
+  * when moving something in the window, the window has to be refreshed every time by filling it with the background color, for example black: `win.fill((0, 0))`
+  * after each event, the window has to be updated: `pygame.display.update()`
 
 **Creating an item or character in a game**  
 Attributes are:
