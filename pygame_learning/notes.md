@@ -51,5 +51,16 @@ Attributes are:
 * velocity
 * x and y position in window
 
-
+**Jumping** (see second_start.py)  
+What is a jump: move up, accelerate, hang still, move down, accelerate.  
+For this a quadratic function is used as follows:
+```py
+if jumpCount >= -10:
+        neg = 1
+        if jumpCount < 0:
+            neg = -1
+        y -= (jumpCount ** 2) * 1 * neg
+        jumpCount -= 1
+```
+       
 
