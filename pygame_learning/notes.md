@@ -7,13 +7,6 @@
   * `event`
   * `image` (to load and display images or sprites)
 
-* first steps:
-  * `import pygame` (import the pygame library)
-  * `pygame.init()` (initialise pygame and all included modules, ready to work)
-  * always close the game with `pygame.quit()`
-
-* with `pygame.display.set_caption("name")` you can add a name to the game window
-
 * pygame classes:
   * `Surface`
     * a pygame object for representing images
@@ -32,6 +25,26 @@ Most used:
   * a special class for storing rectangular coordinates
   * used for managing and moving around of on-screen objects
   * used to manage collisions
+
+**First steps**  
+  * `import pygame` (import the pygame library)
+  * `pygame.init()` (initialise pygame and all included modules, ready to work)
+  * always close the game with `pygame.quit()`
+  * create window: `win = pygame.display.set_mode((width, height))` => width/height values constitute a tuple, between brackets
+  * with `pygame.display.set_caption("name")` you can add a name to the game window
+  * pygames need a mainloop to run; the loop checks for events, collisions, mouse movements etc.; the simplest way is to use a while loop:
+  ```py
+  run = True
+  while run:
+    # do something
+  ```
+
+**Creating an item or character in a game**  
+Attributes are:
+* width
+* height
+* velocity
+* x and y position in window
 
 
 
