@@ -45,3 +45,21 @@ while 1:
     screen.fill(black)
     screen.blit(logo, logorect)
     pygame.display.flip()
+
+
+# example code:
+"""
+keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] and x > speed:
+        x -= speed
+    if keys[pygame.K_RIGHT] and x < 500 - width - speed:
+        x += speed
+    # when the character jumps, it cannot move up and down
+    if not (isJump):
+        if keys[pygame.K_UP] and y > speed:
+            y -= speed
+        if keys[pygame.K_DOWN] and y < 500 - height - speed:
+            y += speed
+        if keys[pygame.K_SPACE]:
+            isJump = True
+"""
