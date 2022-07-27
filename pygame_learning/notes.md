@@ -63,4 +63,8 @@ if jumpCount >= -10:
         jumpCount -= 1
 ```
        
+**Framerate**  
+The framerate per second (FPS) is how many images you see per second.  
+Most action games use 60 FPS: sixty images per second. In Pygame the FPS is defined as Clock: `pygame.time.Clock(x)` (where x is the number of FPS)
+
 
