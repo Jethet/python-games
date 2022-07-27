@@ -38,6 +38,7 @@ Most used:
   while run:
     # do something
   ```
+  * with `pygame.time.delay()` you can control the speed of the game
 
 **Creating an item or character in a game**  
 Attributes are:
