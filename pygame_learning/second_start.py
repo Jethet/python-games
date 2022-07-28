@@ -1,3 +1,4 @@
+from ast import literal_eval
 import pygame
 
 pygame.init()
@@ -68,21 +69,22 @@ class player(object):
 
 
 class projectile(object):
-    def __init__(self, x, y, radius, colour, facing):
+    def __init__(self, x, y, radius, color, facing):
         self.x = x
         self.y = y
         self.radius = radius
-        self.colour = colour
+        self.color = color
         self.facing = facing
         self.speed = 8 * facing
 
     def draw(self, win):
         pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
 
-
 def redrawGameWindow():
     win.blit(bg, (0, 0))
     small_guy.draw(win)
+    for bullet in bullets:
+        bullet.draw(win)
     pygame.display.update()
 
 
@@ -107,11 +109,17 @@ while running:
     keys = pygame.key.get_pressed()
 
     if keys[pygame.K_SPACE]:
-        if len[bullets < 5]:
+        if small_guy.left:
+            facing = -1
+        else:
+            facing = 1
+        if len(bullets) < 5:
+            # the numbers are rounded to avoid decimals
             bullets.append(
-                projectile(round(small_guy.x + small_guy.width // 2)),
-                (round(small_guy.y + small_guy.height // 2)),
-            )
+                projectile(round(small_guy.x + small_guy.width // 2),
+                round(small_guy.y + small_guy.height // 2),
+                 6, (0, 0, 0), facing))
+
     if keys[pygame.K_LEFT] and small_guy.x > small_guy.speed:
         small_guy.x -= small_guy.speed
         small_guy.left = True
