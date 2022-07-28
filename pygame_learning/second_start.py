@@ -33,19 +33,26 @@ class player(object):
         self.left = False
         self.right = False
         self.walkCount = 0
+        self.jumpCount = 10
+        # this determines what direction the character is facing when firing
+        self.standing = True
 
     def draw(self, win):
         if self.walkCount + 1 >= 27:
             self.walkCount = 0
-        # each sprite is used in 3 frames and framerate is 27 per second
-        if self.left:
-            win.blit(walkLeft[self.walkCount//3], (self.x, self.y))
-            self.walkCount += 1
-        elif self.right:
-            win.blit(walkRight[self.walkCount//3], (self.x, self.y))
-            self.walkCount += 1
+        if not (self.standing):
+            # each sprite is used in 3 frames and framerate is 27 per second
+            if self.left:
+                win.blit(walkLeft[self.walkCount//3], (self.x, self.y))
+                self.walkCount += 1
+            elif self.right:
+                win.blit(walkRight[self.walkCount//3], (self.x, self.y))
+                self.walkCount += 1
         else:
-            win.blit(char, (self.x, self.y))
+            if self.right:
+                win.blit(walkRight[0], (self.x, self.y))
+            else:
+                win.blit(walkLeft[0], (self.x, self.y))
 
 
 class projectile(object):
@@ -59,7 +66,6 @@ class projectile(object):
 
     def draw(self, win):
         pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
-    
 
 
 def redrawGameWindow():
@@ -84,13 +90,14 @@ while running:
         small_guy.x -= small_guy.speed
         small_guy.left = True
         small_guy.right = False
+        small_guy.standing = False
     elif keys[pygame.K_RIGHT] and small_guy.x < 500 - small_guy.width - small_guy.speed:
         small_guy.x += small_guy.speed
         small_guy.right = True
         small_guy.left = False
+        small_guy.standing = False
     else:
-        small_guy.right = False
-        small_guy.left = False
+        small_guy.standing = True
         small_guy.walkCount = 0
     # when the character jumps, it cannot move up and down
     if not (small_guy.isJump):
