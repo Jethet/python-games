@@ -83,9 +83,75 @@ class projectile(object):
         # pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
         win.blit(heart, (self.x, self.y))
 
+# the enemy char moves across the x axis between two coordinates
+class enemy(object):
+    walkRight = [
+        pygame.image.load("R1E.png"),
+        pygame.image.load("R2E.png"),
+        pygame.image.load("R3E.png"),
+        pygame.image.load("R4E.png"),
+        pygame.image.load("R5E.png"),
+        pygame.image.load("R6E.png"),
+        pygame.image.load("R7E.png"),
+        pygame.image.load("R8E.png"),
+        pygame.image.load("R9E.png"),
+        pygame.image.load("R10E.png"),
+        pygame.image.load("R11E.png"),
+    ]
+    walkLeft = [
+        pygame.image.load("L1E.png"),
+        pygame.image.load("L2E.png"),
+        pygame.image.load("L3E.png"),
+        pygame.image.load("L4E.png"),
+        pygame.image.load("L5E.png"),
+        pygame.image.load("L6E.png"),
+        pygame.image.load("L7E.png"),
+        pygame.image.load("L8E.png"),
+        pygame.image.load("L9E.png"),
+        pygame.image.load("L10E.png"),
+        pygame.image.load("L11E.png"),
+    ]
+
+    def __init__(self, x, y, width, height, end):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.end = end
+        self.path = [self.x, self.end]
+        self.walkCount = 0
+        self.speed = 3
+
+    def draw(self, win):
+        self.move()
+        if self.walkCount + 1 >= 33:
+            self.walkCount = 0
+
+        if self.speed > 0:
+            win.blit(self.walkRight[self.walkCount // 3], (self.x, self.y))
+            self.walkCount += 1
+        else:
+            win.blit(self.walkLeft[self.walkCount // 3], (self.x, self.y))
+            self.walkCount += 1
+
+    def move(self):
+        if self.speed > 0:
+            if self.x + self.speed < self.path[1]:
+                self.x += self.speed
+            else:
+                self.speed = self.speed * -1
+                self.walkCount = 0
+        else:
+            if self.x - self.speed > self.path[0]:
+                self.x += self.speed
+            else:
+                self.speed = self.speed * -1
+                self.walkCount = 0
+
 def redrawGameWindow():
     win.blit(bg, (0, 0))
     small_guy.draw(win)
+    goblin.draw(win)
     for bullet in bullets:
         bullet.draw(win)
     pygame.display.update()
@@ -93,6 +159,7 @@ def redrawGameWindow():
 
 # MAIN LOOP
 small_guy = player(300, 410, 64, 64)
+goblin = enemy(100, 410, 64, 64, 450)
 bullets = []
 running = True
 
@@ -119,9 +186,13 @@ while running:
         if len(bullets) < 5:
             # the numbers are rounded to avoid decimals
             bullets.append(
-                projectile(round(small_guy.x + small_guy.width // 2),
-                round(small_guy.y + small_guy.height // 2),
-                 6, facing))
+                projectile(
+                    round(small_guy.x + small_guy.width // 2),
+                    round(small_guy.y + small_guy.height // 2),
+                    6,
+                    facing,
+                )
+            )
 
     if keys[pygame.K_LEFT] and small_guy.x > small_guy.speed:
         small_guy.x -= small_guy.speed
