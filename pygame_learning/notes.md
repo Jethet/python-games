@@ -51,6 +51,9 @@ Attributes are:
 * velocity
 * x and y position in window
 
+Example: draw a circle  
+`pygame.draw.circle(win, color, (x, y), radius)`  
+
 **Jumping** (see second_start.py)  
 What is a jump: move up, accelerate, hang still, move down, accelerate.  
 For this a quadratic function is used as follows:

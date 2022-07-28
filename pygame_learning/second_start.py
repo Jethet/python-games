@@ -48,6 +48,20 @@ class player(object):
             win.blit(char, (self.x, self.y))
 
 
+class projectile(object):
+    def __init__(self, x, y, radius, colour, facing):
+        self.x = x
+        self.y = y
+        self.radius = radius
+        self.colour = colour
+        self.facing = facing
+        self.speed = 8 * facing
+
+    def draw(self, win):
+        pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
+    
+
+
 def redrawGameWindow():
     win.blit(bg, (0, 0))
     small_guy.draw(win)
