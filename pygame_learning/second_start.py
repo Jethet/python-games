@@ -4,7 +4,6 @@ pygame.init()
 
 win = pygame.display.set_mode((500, 480))
 pygame.display.set_caption("Second attempt at Pygame")
-running = True
 
 walkRight = [pygame.image.load('R1.png'), pygame.image.load('R2.png'),
              pygame.image.load('R3.png'), pygame.image.load('R4.png'),
@@ -21,6 +20,7 @@ char = pygame.image.load('standing.png')
 
 clock = pygame.time.Clock()
 
+
 class player(object):
     def __init__(self, x, y, width, height):
         self.x = x
@@ -34,26 +34,31 @@ class player(object):
         self.right = False
         self.walkCount = 0
 
+    def draw(self, win):
+        if self.walkCount + 1 >= 27:
+            self.walkCount = 0
+        # each sprite is used in 3 frames and framerate is 27 per second
+        if self.left:
+            win.blit(walkLeft[self.walkCount//3], (self.x, self.y))
+            self.walkCount += 1
+        elif self.right:
+            win.blit(walkRight[self.walkCount//3], (self.x, self.y))
+            self.walkCount += 1
+        else:
+            win.blit(char, (self.x, self.y))
+
 
 def redrawGameWindow():
-    global walkCount
     win.blit(bg, (0, 0))
-    # each sprite is used in 3 frames and framerate is 27 per second
-    if walkCount + 1 >= 27:
-        walkCount = 0
+    small_guy.draw(win)
 
-    if left:
-        win.blit(walkLeft[walkCount//3], (x, y))
-        walkCount += 1
-    elif right:
-        win.blit(walkRight[walkCount//3], (x, y))
-        walkCount += 1
-    else:
-        win.blit(char, (x, y))
     pygame.display.update()
 
 
 # MAIN LOOP
+small_guy = player(300, 410, 64, 64)
+running = True
+
 while running:
     clock.tick(27)
 
@@ -62,38 +67,38 @@ while running:
             running = False
 
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT] and x > speed:
-        x -= speed
-        left = True
-        right = False
-    elif keys[pygame.K_RIGHT] and x < 500 - width - speed:
-        x += speed
-        right = True
-        left = False
+    if keys[pygame.K_LEFT] and small_guy.x > small_guy.speed:
+        small_guy.x -= small_guy.speed
+        small_guy.left = True
+        small_guy.right = False
+    elif keys[pygame.K_RIGHT] and small_guy.x < 500 - small_guy.width - small_guy.speed:
+        small_guy.x += small_guy.speed
+        small_guy.right = True
+        small_guy.left = False
     else:
-        right = False
-        left = False
-        walkCount = 0
+        small_guy.right = False
+        small_guy.left = False
+        small_guy.walkCount = 0
     # when the character jumps, it cannot move up and down
-    if not (isJump):
+    if not (small_guy.isJump):
         if keys[pygame.K_SPACE]:
-            isJump = True
-            right = False
-            left = False
-            walkCount = 0
+            small_guy.isJump = True
+            small_guy.right = False
+            small_guy.left = False
+            small_guy.walkCount = 0
 
     # what is a jump: move up, accelerate, hang still, move down, accelerate
     else:
-        if jumpCount >= -10:
+        if small_guy.jumpCount >= -10:
             neg = 1
-            if jumpCount < 0:
+            if small_guy.jumpCount < 0:
                 neg = -1
-            y -= (jumpCount ** 2) * 1 * neg
-            jumpCount -= 1
+            small_guy.y -= (small_guy.jumpCount ** 2) * 1 * neg
+            small_guy.jumpCount -= 1
 
         else:
-            isJump = False
-            jumpCount = 10
+            small_guy.isJump = False
+            small_guy.jumpCount = 10
 
     redrawGameWindow()
 
