@@ -51,7 +51,6 @@ class player(object):
 def redrawGameWindow():
     win.blit(bg, (0, 0))
     small_guy.draw(win)
-
     pygame.display.update()
 
 
