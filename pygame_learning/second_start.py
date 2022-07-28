@@ -21,17 +21,18 @@ char = pygame.image.load('standing.png')
 
 clock = pygame.time.Clock()
 
-x = 50
-y = 400
-width = 64
-height = 64
-speed = 5
-isJump = False
-jumpCount = 10
-# character: moving y/n, what direction, how much moved already
-left = False
-right = False
-walkCount = 0
+class player(object):
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.speed = 5
+        self.isJump = False
+        self.jumpCount = 10
+        self.left = False
+        self.right = False
+        self.walkCount = 0
 
 
 def redrawGameWindow():
