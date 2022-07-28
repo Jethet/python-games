@@ -30,6 +30,7 @@ walkLeft = [
 ]
 bg = pygame.image.load("bg.jpg")
 char = pygame.image.load("standing.png")
+heart = pygame.image.load("heart.png")
 
 clock = pygame.time.Clock()
 
@@ -69,16 +70,18 @@ class player(object):
 
 
 class projectile(object):
-    def __init__(self, x, y, radius, color, facing):
+    def __init__(self, x, y, heart, facing):
         self.x = x
         self.y = y
-        self.radius = radius
-        self.color = color
+        self.heart = heart
+        # self.radius = radius
+        # self.color = color
         self.facing = facing
         self.speed = 8 * facing
 
     def draw(self, win):
-        pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
+        # pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
+        win.blit(heart, (self.x, self.y))
 
 def redrawGameWindow():
     win.blit(bg, (0, 0))
@@ -118,7 +121,7 @@ while running:
             bullets.append(
                 projectile(round(small_guy.x + small_guy.width // 2),
                 round(small_guy.y + small_guy.height // 2),
-                 6, (0, 0, 0), facing))
+                 6, facing))
 
     if keys[pygame.K_LEFT] and small_guy.x > small_guy.speed:
         small_guy.x -= small_guy.speed
