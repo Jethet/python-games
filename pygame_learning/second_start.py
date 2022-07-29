@@ -30,10 +30,8 @@ walkLeft = [
 ]
 bg = pygame.image.load("bg.jpg")
 char = pygame.image.load("standing.png")
-heart = pygame.image.load("heart.png")
-
+# heart = pygame.image.load("heart.png")
 clock = pygame.time.Clock()
-
 
 class player(object):
     def __init__(self, x, y, width, height):
@@ -50,6 +48,8 @@ class player(object):
         self.jumpCount = 10
         # this determines what direction the character is facing when firing
         self.standing = True
+        # hit boxes around characters make it possible to create collisions
+        self.hitbox = (self.x + 17, self.y + 11, 29, 52)
 
     def draw(self, win):
         if self.walkCount + 1 >= 27:
@@ -67,21 +67,23 @@ class player(object):
                 win.blit(walkRight[0], (self.x, self.y))
             else:
                 win.blit(walkLeft[0], (self.x, self.y))
+        self.hitbox = (self.x + 17, self.y + 11, 29, 52)
+        pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)
 
 
 class projectile(object):
-    def __init__(self, x, y, heart, facing):
+    def __init__(self, x, y, color, radius, facing):
         self.x = x
         self.y = y
-        self.heart = heart
-        # self.radius = radius
-        # self.color = color
+        # self.heart = heart
+        self.radius = radius
+        self.color = color
         self.facing = facing
         self.speed = 8 * facing
 
     def draw(self, win):
-        # pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
-        win.blit(heart, (self.x, self.y))
+        pygame.draw.circle(win, self.color, (self.x, self.y), self.radius)
+        # win.blit(heart, (self.x, self.y))
 
 # the enemy char moves across the x axis between two coordinates
 class enemy(object):
@@ -121,6 +123,8 @@ class enemy(object):
         self.path = [self.x, self.end]
         self.walkCount = 0
         self.speed = 3
+        self.hitbox =(self.x + 17, self.y + 2, 31, 57)
+        self.hitNumber = 0
 
     def draw(self, win):
         self.move()
@@ -133,6 +137,8 @@ class enemy(object):
         else:
             win.blit(self.walkLeft[self.walkCount // 3], (self.x, self.y))
             self.walkCount += 1
+        self.hitbox = (self.x + 17, self.y + 2, 31, 57)
+        pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)
 
     def move(self):
         if self.speed > 0:
@@ -148,6 +154,10 @@ class enemy(object):
                 self.speed = self.speed * -1
                 self.walkCount = 0
 
+    def hit(self):
+        self.hitNumber +=1
+        print(f"Small guy hit the goblin {self.hitNumber} times!")
+
 def redrawGameWindow():
     win.blit(bg, (0, 0))
     small_guy.draw(win)
@@ -161,16 +171,28 @@ def redrawGameWindow():
 small_guy = player(300, 410, 64, 64)
 goblin = enemy(100, 410, 64, 64, 450)
 bullets = []
+shootLoop = 0
 running = True
 
 while running:
     clock.tick(27)
+
+    if shootLoop > 0:
+        shootLoop += 1
+    if shootLoop > 3:
+        shootLoop = 0
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
     for bullet in bullets:
+        # check if bullet is in hitbox: check top and bottom of hitbox rectangle
+        if bullet.y - bullet.radius < goblin.hitbox[1] + goblin.hitbox[3] and bullet.y + bullet.radius > goblin.hitbox[1]:
+            if bullet.x + bullet.radius > goblin.hitbox[0] and bullet.x - bullet.radius < goblin.hitbox[0] + goblin.hitbox[2]:
+                goblin.hit()
+                bullets.pop(bullets.index(bullet))
+
         if bullet.x < 500 and bullet.x > 0:
             bullet.x += bullet.speed
         else:
@@ -178,21 +200,15 @@ while running:
 
     keys = pygame.key.get_pressed()
 
-    if keys[pygame.K_SPACE]:
+    if keys[pygame.K_SPACE] and shootLoop == 0:
         if small_guy.left:
             facing = -1
         else:
             facing = 1
         if len(bullets) < 5:
             # the numbers are rounded to avoid decimals
-            bullets.append(
-                projectile(
-                    round(small_guy.x + small_guy.width // 2),
-                    round(small_guy.y + small_guy.height // 2),
-                    6,
-                    facing,
-                )
-            )
+            bullets.append(projectile(round(small_guy.x + small_guy.width // 2), round(small_guy.y + small_guy.height // 2), (0, 0, 0), 6, facing))
+        shootLoop = 1
 
     if keys[pygame.K_LEFT] and small_guy.x > small_guy.speed:
         small_guy.x -= small_guy.speed
