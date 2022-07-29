@@ -44,6 +44,10 @@ Most used:
   * when moving something in the window, the window has to be refreshed every time by filling it with the background color, for example black: `win.fill((0, 0))`
   * after each event, the window has to be updated: `pygame.display.update()`
 
+**Framerate**  
+The framerate per second (FPS) is how many images you see per second.  
+Most action games use 60 FPS: sixty images per second. In Pygame the FPS is defined as Clock: `pygame.time.Clock(x)` (where x is the number of FPS)
+
 **Creating an item or character in a game**  
 Attributes are:
 * width
@@ -65,9 +69,8 @@ if jumpCount >= -10:
         y -= (jumpCount ** 2) * 1 * neg
         jumpCount -= 1
 ```
-       
-**Framerate**  
-The framerate per second (FPS) is how many images you see per second.  
-Most action games use 60 FPS: sixty images per second. In Pygame the FPS is defined as Clock: `pygame.time.Clock(x)` (where x is the number of FPS)
+**Collision**  
+A character needs to have a hitbox around it to make collision or hitting it possible. The hitbox is created with x and y coordinates where the top left of the hitbox should be, and the width and height of the box to fit around the character.  
+You can check if the hitbox is touched by another character, an object (like bullets), etc. by checking if this other has touched any part of the hitbox: between the coordinates plus the size of the char (width and height).
 
 
