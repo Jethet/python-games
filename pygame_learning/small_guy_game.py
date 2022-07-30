@@ -173,15 +173,6 @@ class enemy(object):
             self.visible = False
         print("Hit")
 
-# def countdown(playSeconds):
-#     while playSeconds:
-#         # mins, secs = divmod(t, 60)
-#         # timer = "{:02d} : {:02d}".format(mins, secs)
-#         # print(timer, end="\r")
-#         time.sleep(1)
-#         playSeconds -= 1
-#         return playSeconds
-
 def redrawGameWindow():
     win.blit(bg, (0, 0))
     textHits = font.render(f"Small guy hit goblin {hitNumber} times", 1, (0,0,0))
@@ -204,13 +195,7 @@ running = True
 playSeconds = 15
 
 while running:
-    if playSeconds == 0:
-        running = False
-        
-    # while playSeconds:
-    #     time.sleep(1)
-    #     playSeconds -= 1
-        
+
     clock.tick(27)
 
     if shootLoop > 0:
