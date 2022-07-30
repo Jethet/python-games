@@ -7,6 +7,6 @@ def countdown(t):
         print(timer, end="\r")
         time.sleep(1)
         t -= 1
-    print("Goodbye")
+    print("It's time!")
 
 countdown(5)
