@@ -1,10 +1,11 @@
 from ast import literal_eval
 import pygame
+import time
 
 pygame.init()
 
 win = pygame.display.set_mode((500, 480))
-pygame.display.set_caption("Second attempt at Pygame")
+pygame.display.set_caption("Second Pygame")
 
 walkRight = [
     pygame.image.load("R1.png"),
@@ -180,6 +181,7 @@ def redrawGameWindow():
     for bullet in bullets:
         bullet.draw(win)
     pygame.display.update()
+
 
 
 # MAIN LOOP
