@@ -142,7 +142,10 @@ class enemy(object):
                 self.walkCount += 1
 
             pygame.draw.rect(win, (255, 0, 0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
-            pygame.draw.rect(win, (0, 255, 0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
+            # the calculation below calculates how much of the green healthbar has to become red: 50 width divided by 10 health
+            #   and then multiplied by the remaining health number that is descending, so the green becomes less and red increases
+            #   every time the goblin is hit until the total health number is used (with the 11th hit all 10 health are used) 
+            pygame.draw.rect(win, (0, 128, 0), (self.hitbox[0], self.hitbox[1] - 20, 50 - ((50/10) * (10 - self.health)), 10))
             self.hitbox = (self.x + 17, self.y + 2, 31, 57)
             # code line 142 draws red rect around char to show hitbox
             # pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)
