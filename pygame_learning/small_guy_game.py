@@ -34,6 +34,7 @@ char = pygame.image.load("standing.png")
 # heart = pygame.image.load("heart.png")
 clock = pygame.time.Clock()
 hitNumber = 0
+playSeconds = 0
 
 class player(object):
     def __init__(self, x, y, width, height):
@@ -172,24 +173,25 @@ class enemy(object):
             self.visible = False
         print("Hit")
 
+def countdown(t):
+    while t:
+        # mins, secs = divmod(t, 60)
+        # timer = "{:02d} : {:02d}".format(mins, secs)
+        # print(timer, end="\r")
+        time.sleep(1)
+        t -= 1
+        textTime = font.render(f"You have {t} left", 1, (0,0,0))
+        win.blit(textTime, (40, 10))
+
 def redrawGameWindow():
     win.blit(bg, (0, 0))
-    text = font.render(f"Small guy hit goblin {hitNumber} times", 1, (0,0,0))
-    win.blit(text, (40, 10))
+    textHits = font.render(f"Small guy hit goblin {hitNumber} times", 1, (0,0,0))
+    win.blit(textHits, (40, 10))
     small_guy.draw(win)
     goblin.draw(win)
     for bullet in bullets:
         bullet.draw(win)
     pygame.display.update()
-
-def countdown(t):
-    while t:
-        mins, secs = divmod(t, 60)
-        timer = "{:02d} : {:02d}".format(mins, secs)
-        print(timer, end="\r")
-        time.sleep(1)
-        t -= 1
-    print("It's time!")
 
 # MAIN LOOP
 font = pygame.font.SysFont("comicsans", 30, True)
@@ -201,6 +203,7 @@ running = True
 
 while running:
     clock.tick(27)
+    countdown(15)
 
     if shootLoop > 0:
         shootLoop += 1
