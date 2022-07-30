@@ -73,4 +73,8 @@ if jumpCount >= -10:
 A character needs to have a hitbox around it to make collision or hitting it possible. The hitbox is created with x and y coordinates where the top left of the hitbox should be, and the width and height of the box to fit around the character.  
 You can check if the hitbox is touched by another character, an object (like bullets), etc. by checking if this other has touched any part of the hitbox: between the coordinates plus the size of the char (width and height).
 
+**Showing text in window**  
+Variables needed with example code:
+font = `pygame.font.SysFont("comicsans", 30, True, True)` (True stands for bold and italic)
+text = `font.render("myText")` => this creates a surface that can be blit onto the screen (same as blitting an imange)
 

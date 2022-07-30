@@ -32,6 +32,7 @@ bg = pygame.image.load("bg.jpg")
 char = pygame.image.load("standing.png")
 # heart = pygame.image.load("heart.png")
 clock = pygame.time.Clock()
+hitNumber = 0
 
 class player(object):
     def __init__(self, x, y, width, height):
@@ -124,7 +125,6 @@ class enemy(object):
         self.walkCount = 0
         self.speed = 3
         self.hitbox =(self.x + 17, self.y + 2, 31, 57)
-        self.hitNumber = 0
 
     def draw(self, win):
         self.move()
@@ -155,11 +155,12 @@ class enemy(object):
                 self.walkCount = 0
 
     def hit(self):
-        self.hitNumber +=1
-        print(f"Small guy hit the goblin {self.hitNumber} times!")
+        print("Hit")
 
 def redrawGameWindow():
     win.blit(bg, (0, 0))
+    text = font.render(f"Small guy hit goblin {hitNumber} times", 1, (0,0,0))
+    win.blit(text, (40, 10))
     small_guy.draw(win)
     goblin.draw(win)
     for bullet in bullets:
@@ -168,6 +169,7 @@ def redrawGameWindow():
 
 
 # MAIN LOOP
+font = pygame.font.SysFont("comicsans", 30, True)
 small_guy = player(300, 410, 64, 64)
 goblin = enemy(100, 410, 64, 64, 450)
 bullets = []
@@ -191,6 +193,7 @@ while running:
         if bullet.y - bullet.radius < goblin.hitbox[1] + goblin.hitbox[3] and bullet.y + bullet.radius > goblin.hitbox[1]:
             if bullet.x + bullet.radius > goblin.hitbox[0] and bullet.x - bullet.radius < goblin.hitbox[0] + goblin.hitbox[2]:
                 goblin.hit()
+                hitNumber +=1
                 bullets.pop(bullets.index(bullet))
 
         if bullet.x < 500 and bullet.x > 0:
