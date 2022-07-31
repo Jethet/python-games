@@ -89,8 +89,8 @@ class player(object):
         self.x = 60
         self.y = 410
         self.walkCount = 0
-        textCollide = pygame.font.SysFont("comicsans", 100)
-        text = textCollide.render("-5", 1, (255, 0, 0))
+        textCollide = pygame.font.SysFont("comicsans", 40)
+        text = textCollide.render("You collided! -5 hits", 1, (255, 0, 0))
         # text has to be in center: calculate center of screen minus half of textwidth
         # the 200 for the height is a bit random (screenheight is 480 here)
         win.blit(text, ((500/2) - (text.get_width()/2), 200))
@@ -98,12 +98,12 @@ class player(object):
         # to see the text we need to pause the game for a bit BUT it has to still be
         # possible to quit the game:
         i = 0
-        while i < 300:
-            pygame.time.delay(10)
+        while i < 200:
+            pygame.time.delay(5)
             i += 1
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    i = 301
+                    i = 201
                     pygame.quit()
 
 class projectile(object):
@@ -225,7 +225,7 @@ goblin = enemy(100, 410, 64, 64, 450)
 bullets = []
 shootLoop = 0
 running = True
-playSeconds = 15
+playSeconds = 20
 
 while running:
 
