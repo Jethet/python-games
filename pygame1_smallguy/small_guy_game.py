@@ -32,11 +32,19 @@ walkLeft = [
     pygame.image.load("L8.png"),
     pygame.image.load("L9.png"),
 ]
+
 bg = pygame.image.load("bg.jpg")
 char = pygame.image.load("standing.png")
 # heart = pygame.image.load("heart.png")
-clock = pygame.time.Clock()
+bulletSound = pygame.mixer.Sound("bulletSound.mp3")
+hitSound = pygame.mixer.Sound("hitSound.mp3")
+
+music = pygame.mixer.music.load("music.mp3")
+# to play the music continuously, never stopping:
+pygame.mixer.music.play(-1)
+
 hitNumber = 0
+clock = pygame.time.Clock()
 
 class player(object):
     def __init__(self, x, y, width, height):
@@ -220,6 +228,7 @@ while running:
         # check if bullet is in hitbox: check top and bottom of hitbox rectangle
         if bullet.y - bullet.radius < goblin.hitbox[1] + goblin.hitbox[3] and bullet.y + bullet.radius > goblin.hitbox[1]:
             if bullet.x + bullet.radius > goblin.hitbox[0] and bullet.x - bullet.radius < goblin.hitbox[0] + goblin.hitbox[2]:
+                hitSound.play()
                 goblin.hit()
                 hitNumber +=1
                 bullets.pop(bullets.index(bullet))
@@ -232,6 +241,7 @@ while running:
     keys = pygame.key.get_pressed()
 
     if keys[pygame.K_SPACE] and shootLoop == 0:
+        bulletSound.play()
         if small_guy.left:
             facing = -1
         else:
