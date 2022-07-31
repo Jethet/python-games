@@ -1,3 +1,6 @@
+# TO DO: REPLACE BULLETS BY APPLES OR HEARTS OR FLOWERS
+#        ADD TIME BAR THAT CHANGES FROM GREEN TO RED WHEN SECONDS PASS
+
 from ast import literal_eval
 import pygame
 import time
@@ -34,7 +37,6 @@ char = pygame.image.load("standing.png")
 # heart = pygame.image.load("heart.png")
 clock = pygame.time.Clock()
 hitNumber = 0
-# playSeconds = 15
 
 class player(object):
     def __init__(self, x, y, width, height):
@@ -177,7 +179,7 @@ def redrawGameWindow():
     win.blit(bg, (0, 0))
     textHits = font.render(f"Small guy hit goblin {hitNumber} times", 1, (0,0,0))
     win.blit(textHits, (40, 40))
-    textTime = font.render(f"You have {playSeconds} left", 1, (0,0,0))
+    textTime = font.render(f"You have {playSeconds} seconds left", 1, (0,0,0))
     win.blit(textTime, (40, 10))
     small_guy.draw(win)
     goblin.draw(win)
@@ -187,6 +189,7 @@ def redrawGameWindow():
 
 # MAIN LOOP
 font = pygame.font.SysFont("comicsans", 30, True)
+pygame.time.set_timer(pygame.USEREVENT, 1000)
 small_guy = player(300, 410, 64, 64)
 goblin = enemy(100, 410, 64, 64, 450)
 bullets = []
@@ -205,6 +208,12 @@ while running:
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            running = False
+
+        if event.type == pygame.USEREVENT: 
+                playSeconds -= 1
+        if playSeconds == 0:
+            print("Time's up!")
             running = False
 
     for bullet in bullets:
