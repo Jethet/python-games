@@ -84,6 +84,28 @@ class player(object):
         # code line 72 draws red rect around char to show hitbox
         # pygame.draw.rect(win, (255, 0, 0), self.hitbox, 2)
 
+    def hit(self):
+        #  this is resetting the char after a hit and shows it as standing
+        self.x = 60
+        self.y = 410
+        self.walkCount = 0
+        textCollide = pygame.font.SysFont("comicsans", 100)
+        text = textCollide.render("-5", 1 (255, 0, 0))
+        # text has to be in center: calculate center of screen minus half of textwidth
+        # the 200 for the height is a bit random (screenheight is 480 here)
+        win.blit(text, ((500/2) - (text.get_width()/2), 200))
+        pygame.display.update()
+        # to see the text we need to pause the game for a bit BUT it has to still be
+        # possible to quit the game:
+        i = 0
+        while i < 300:
+            pygame.time.delay(10)
+            i += 1
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    i = 301
+                    pygame.quit()
+
 class projectile(object):
     def __init__(self, x, y, color, radius, facing):
         self.x = x
@@ -223,6 +245,11 @@ while running:
         if playSeconds == 0:
             print("Time's up!")
             running = False
+    # the char collides with the goblin, calculated via the hitboxes, 5 hitnumber is deducted for every collision
+    if small_guy.hitbox[1] < goblin.hitbox[1] + goblin.hitbox[3] and small_guy.hitbox[1] + small_guy.hitbox[3] > goblin.hitbox[1]:
+        if small_guy.hitbox[0] + small_guy.hitbox[2] > goblin.hitbox[0] and small_guy.hitbox[0] < goblin.hitbox[0] + goblin.hitbox[2]:
+            small_guy.hit()
+            hitNumber -= 5
 
     for bullet in bullets:
         # check if bullet is in hitbox: check top and bottom of hitbox rectangle
