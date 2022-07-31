@@ -86,6 +86,8 @@ class player(object):
 
     def hit(self):
         #  this is resetting the char after a hit and shows it as standing
+        self.isJump = False
+        self.jumpCount = 10
         self.x = 60
         self.y = 410
         self.walkCount = 0
@@ -228,13 +230,7 @@ running = True
 playSeconds = 20
 
 while running:
-
     clock.tick(27)
-
-    if shootLoop > 0:
-        shootLoop += 1
-    if shootLoop > 3:
-        shootLoop = 0
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -245,12 +241,20 @@ while running:
         if playSeconds == 0:
             print("Time's up!")
             running = False
-    # the char collides with the goblin, calculated via the hitboxes, 5 hitnumber is deducted for every collision
-    if small_guy.hitbox[1] < goblin.hitbox[1] + goblin.hitbox[3] and small_guy.hitbox[1] + small_guy.hitbox[3] > goblin.hitbox[1]:
-        if small_guy.hitbox[0] + small_guy.hitbox[2] > goblin.hitbox[0] and small_guy.hitbox[0] < goblin.hitbox[0] + goblin.hitbox[2]:
-            small_guy.hit()
-            hitNumber -= 5
 
+    # the goblin collides with little guy ONLY when it is visible (= not destroyed yet)
+    if goblin.visible == True:
+        # the char collides with the goblin, calculated via the hitboxes, 5 hitnumber is deducted for every collision
+        if small_guy.hitbox[1] < goblin.hitbox[1] + goblin.hitbox[3] and small_guy.hitbox[1] + small_guy.hitbox[3] > goblin.hitbox[1]:
+            if small_guy.hitbox[0] + small_guy.hitbox[2] > goblin.hitbox[0] and small_guy.hitbox[0] < goblin.hitbox[0] + goblin.hitbox[2]:
+                small_guy.hit()
+                hitNumber -= 5
+            
+    if shootLoop > 0:
+        shootLoop += 1
+    if shootLoop > 3:
+        shootLoop = 0
+        
     for bullet in bullets:
         # check if bullet is in hitbox: check top and bottom of hitbox rectangle
         if bullet.y - bullet.radius < goblin.hitbox[1] + goblin.hitbox[3] and bullet.y + bullet.radius > goblin.hitbox[1]:
