@@ -90,7 +90,7 @@ class player(object):
         self.y = 410
         self.walkCount = 0
         textCollide = pygame.font.SysFont("comicsans", 100)
-        text = textCollide.render("-5", 1 (255, 0, 0))
+        text = textCollide.render("-5", 1, (255, 0, 0))
         # text has to be in center: calculate center of screen minus half of textwidth
         # the 200 for the height is a bit random (screenheight is 480 here)
         win.blit(text, ((500/2) - (text.get_width()/2), 200))
