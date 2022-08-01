@@ -233,13 +233,30 @@ while running:
     clock.tick(27)
 
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+        # if event.type == pygame.QUIT:
+        #     running = False
 
         if event.type == pygame.USEREVENT: 
-                playSeconds -= 1
+            playSeconds -= 1
+            
+        if event.type == pygame.QUIT:
+            running = False
         if playSeconds == 0:
             print("Time's up!")
+            running = False
+
+        if hitNumber == 10:
+            textGameOver = font.render(f"The goblin was hit 10 times, GAME OVER", 1, (0,255,0))
+            print("game over")
+            win.blit(textGameOver, (40, 25))
+            i = 0
+            while i < 200:
+                pygame.time.delay(5)
+                i += 1
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        i = 201
+                        pygame.quit()
             running = False
 
     # the goblin collides with little guy ONLY when it is visible (= not destroyed yet)
