@@ -2,13 +2,14 @@ import pygame, sys
 
 pygame.init()
 
-size = width, height = 320, 240
-speed = [2, 2]
+size = width, height = 620, 540
+speed = [1.5, 1.5]
 black = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
 
-ball = pygame.image.load("ball.png")
+img = pygame.image.load("ball.png")
+ball = pygame.transform.scale(img, (65, 65))
 ballrect = ball.get_rect()
 
 while 1:
