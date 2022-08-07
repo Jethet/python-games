@@ -91,3 +91,12 @@ Variables needed with example code:
 font = `pygame.font.SysFont("comicsans", 30, True, True)` (True stands for bold and italic)
 text = `font.render("myText")` => this creates a surface that can be blit onto the screen (same as blitting an imange)
 
+**Keys**  
+To use key press for jumping, increasing speed, shooting bullets etc. write:  
+    `keys = pygame.key.get_pressed()`
+and use the key constants (K_xxx) as follows:  
+K_SPACE               space
+K_UP                  up arrow
+K_DOWN                down arrow
+K_RIGHT               right arrow
+K_LEFT                left arrow
