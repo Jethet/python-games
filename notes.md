@@ -44,6 +44,19 @@ Most used:
   * when moving something in the window, the window has to be refreshed every time by filling it with the background color, for example black: `win.fill((0, 0))`
   * after each event, the window has to be updated: `pygame.display.update()`
 
+**Using images**  
+Add the image to the folder. In the code, load and save it into the img variable. Use the correct image name plus extension and add this in *string* format.
+
+To draw an image on the screen, use `Surface.blit()` (can be screen.blit() or window.blit()).  
+
+`pygame.display.flip()` means that Pygame is buffering everything that has been drawn, to make it visible on the screen as completely drawn frames (otherwise the user will see half completed parts of the screen during creation).
+
+To resize an image, use `pygame.transform.scale()`:
+```py
+img = pygame.image.load("ball.png")
+ball = pygame.transform.scale(img, (65, 65))
+```
+
 **Framerate**  
 The framerate per second (FPS) is how many images you see per second.  
 Most action games use 60 FPS: sixty images per second. In Pygame the FPS is defined as Clock: `pygame.time.Clock(x)` (where x is the number of FPS)
