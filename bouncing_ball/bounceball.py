@@ -3,11 +3,12 @@ import pygame, sys
 pygame.init()
 
 size = width, height = 620, 540
-speed1 = [1.5, 1.5]
+speed1 = [2, 2]
 speed2 = [1, 1]
 black = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
+pygame.display.set_caption("Bouncing Beach Balls")
 
 img1 = pygame.image.load("ball1.png")
 img2 = pygame.image.load("ball2.png")
@@ -28,6 +29,7 @@ while 1:
         speed1[0] = -speed1[0]
     if ballrect1.top < 0 or ballrect1.bottom > height:
         speed1[1] = -speed1[1]
+
     if ballrect2.left < 0 or ballrect2.right > width:
         speed2[0] = -speed2[0]
     if ballrect2.top < 0 or ballrect2.bottom > height:
@@ -35,6 +37,9 @@ while 1:
 
     screen.fill(black)
 
-    screen.blit(ball1, ballrect1, ball2, ballrect2)
-
+    screen.blit(ball1, ballrect1)
     pygame.display.flip()
+    
+    screen.blit(ball2, ballrect2)
+    pygame.display.flip()
+
