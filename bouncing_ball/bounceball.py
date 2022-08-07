@@ -9,7 +9,7 @@ black = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
 
-img1 = pygame.image.load("ball.png")
+img1 = pygame.image.load("ball1.png")
 img2 = pygame.image.load("ball2.png")
 ball1 = pygame.transform.scale(img1, (65, 65))
 ball2 = pygame.transform.scale(img2, (65, 65))
@@ -34,7 +34,7 @@ while 1:
         speed2[1] = -speed2[1]
 
     screen.fill(black)
-    screen.blit(ball1, ballrect1)
-    screen.blit(ball2, ballrect2)
+
+    screen.blit(ball1, ballrect1, ball2, ballrect2)
 
     pygame.display.flip()
