@@ -1,3 +1,5 @@
+## Pygame
+
 **Concepts,vocabulary etc. pygame**  
 
 * pygame is a library composed of various modules to access your hardware etc:
@@ -101,8 +103,9 @@ K_DOWN                down arrow
 K_RIGHT               right arrow
 K_LEFT                left arrow
 
+### Tkinter
 
-**Tkinter**  
+**Basics**  
 * import the Tkinter module: `import tkinter as tk`
 * create an instance of the tk.Tk class => this creates the application window: `root = tk.Tk()`
 * add a component (= widget) as follows: widget = WidgetName(container, **options)
@@ -126,3 +129,17 @@ Scrollbar | Used to scroll down the contents. It provides a slide controller.
 SpinBox | Allows user to select from given set of values
 Text | Allows user to edit multiline text and format the way it has to be displayed
 Menu | Used to create all kinds of menu used by an application
+
+**Tkinter window**  
+* the root window is created with `root = tk.Tk()`. It has three system buttons:  
+*Minimize*, *Maximize*, and *Close*
+* change the window title with the `window.title(new_title)` method: `root.title("Window Demo example")
+* to get the current title of the window, use `title = window.title()` with no argument
+* **size of the window:** use the `window.geometry(new_geometry)` method 
+* the geometry specification is width x height +-x +- y: width and height are in pixels, the x is the *horizontal* position and y is *vertical position* of the window
+* example: +50 as x means the left edge of the window is 50 pixels from the left edge of the screen; -50 means the right edge is 50 pixels from the right edge of the screen
+* prevent the window from resizing with the `window.resizable(width, height)` method: `root.resizable(false, false)`
+* if window is resizable, specify minimum and maximum sizes with `window.minsize(min_width, min_height)` and `window.maxsize(max_width, max_height)` methods
+* for *transparency*, use `"-alpha"`: from 0.0 (fully transparent) to 1.0 (fully opaque). Example: `root.attributes("-alpha", 0.5)`
+
+
