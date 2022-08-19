@@ -102,7 +102,13 @@ K_RIGHT               right arrow
 K_LEFT                left arrow
 
 
-**Basic Tkinter Widgets:**  
+**Tkinter**  
+* import the Tkinter module: `import tkinter as tk`
+* create an instance of the tk.Tk class => this creates the application window: `root = tk.Tk()`
+* add a component (= widget) as follows: widget = WidgetName(container, **options)
+* `container` is parent window/frame to place the widget; `options` is keyword/s argument/s that specify configuration of the widget
+* example: `message = tk.Label(root, text = "Hello World!")` => this creates a `label` widget that is placed on the `root` window
+* to make the label visible, use the `pack()` method: `message.pack()`
 
 Widgets | Description
 ------- | -----------
