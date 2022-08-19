@@ -103,6 +103,8 @@ K_DOWN                down arrow
 K_RIGHT               right arrow
 K_LEFT                left arrow
 
+---
+
 ### Tkinter
 
 **Basics**  
@@ -128,7 +130,8 @@ Scale | Used to provide a graphical slider which allows to select any value from
 Scrollbar | Used to scroll down the contents. It provides a slide controller.
 SpinBox | Allows user to select from given set of values
 Text | Allows user to edit multiline text and format the way it has to be displayed
-Menu | Used to create all kinds of menu used by an application
+Menu | Used to create all kinds of menu used by an application  
+
 
 **Tkinter window**  
 * the root window is created with `root = tk.Tk()`. It has three system buttons:  
