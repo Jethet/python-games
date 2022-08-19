@@ -100,3 +100,23 @@ K_UP                  up arrow
 K_DOWN                down arrow
 K_RIGHT               right arrow
 K_LEFT                left arrow
+
+
+**Basic Tkinter Widgets:**  
+
+Widgets | Description
+------- | -----------
+Label | Used to display text or image on the screen
+Button | Used to add buttons to your application
+Canvas | Used to draw pictures and others layouts like texts, graphics etc.
+ComboBox | Contains a down arrow to select from list of available options
+CheckButton | Displays a number of options to the user as toggle buttons from which user can select any number of options.
+RadiButton | Used to implement one-of-many selection as it allows only one option to be selected
+Entry | Used to input single line text entry from user
+Frame | Used as container to hold and organize the widgets
+Message | Works like label and refers to multi-line and non-editable text
+Scale | Used to provide a graphical slider which allows to select any value from that scale
+Scrollbar | Used to scroll down the contents. It provides a slide controller.
+SpinBox | Allows user to select from given set of values
+Text | Allows user to edit multiline text and format the way it has to be displayed
+Menu | Used to create all kinds of menu used by an application
