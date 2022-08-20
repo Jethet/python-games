@@ -171,3 +171,32 @@ ttk.Label(root, text="Themed Label").pack()
 
 root.mainloop()
 ```
+
+**Why use ttk widgets**  
+* ttk widgets separate the code that implements the widget's behaviour from the appearance through the *styling system* (see below)
+* ttk widgets have the native look and feel of the platform on which the programme runs
+* ttk widgets simplify and generalise the state-specific widget behaviour (e.g. change appearance of a widget depending on its state)
+
+The following ttk widgets *replace* the Tkinkter widgets with the same names:
+
+    Button
+    Checkbutton
+    Entry
+    Frame
+    Label
+    LabelFrame
+    Menubutton
+    PanedWindow
+    Radiobutton
+    Scale
+    Scrollbar
+    Spinbox
+
+And the following widgets are *new and specific to ttk*:
+
+    Combobox
+    Notebook
+    Progressbar
+    Separator
+    Sizegrip
+    Treeview
