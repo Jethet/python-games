@@ -132,6 +132,7 @@ SpinBox | Allows user to select from given set of values
 Text | Allows user to edit multiline text and format the way it has to be displayed
 Menu | Used to create all kinds of menu used by an application  
 
+---
 
 **Tkinter window**  
 * the root window is created with `root = tk.Tk()`. It has three system buttons:  
@@ -144,5 +145,29 @@ Menu | Used to create all kinds of menu used by an application
 * prevent the window from resizing with the `window.resizable(width, height)` method: `root.resizable(false, false)`
 * if window is resizable, specify minimum and maximum sizes with `window.minsize(min_width, min_height)` and `window.maxsize(max_width, max_height)` methods
 * for *transparency*, use `"-alpha"`: from 0.0 (fully transparent) to 1.0 (fully opaque). Example: `root.attributes("-alpha", 0.5)`
+* *window stacking order:* the order of windows placed on the screen, from bottom to top. The closer window is on the top of the stack and overlaps the one lower. To place a window always at the top, use `window.attributes("-topmost", 1)`.
+to move a window up or down the stack, use `window.lift()` and `window.lower()` methods
+* *change window icon:*
+    1. prepare an image in the .ico format (a png or jpg can be converted with an online tool)
+    2. place the icon in the folder that is accessible from the programme
+    3. call the `iconbitmap()` method of the window object: `window.iconbitmap("./images/my_icon.ico")`
+---
 
+### Tkinter.ttk module
+Tkinter has two generations of widgets:
+* classic `tk` widgets, introduced in 1991
+* new themed `ttk` widgets, added in 2007 => replace many (not all) classic widgets
+The `tkinter.ttk` module containes all `ttk` widgets and should always be used.
 
+To import widgets, use both:
+```py
+import tkinter as tk
+from tkinter import ttk
+
+root = tk.Tk()
+
+tk.Label(root, text="Classic Label").pack()
+ttk.Label(root, text="Themed Label").pack()
+
+root.mainloop()
+```
