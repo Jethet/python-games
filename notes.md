@@ -2,7 +2,7 @@
 
 **Concepts, vocabulary etc. Pygame**  
 
-* pygame is a library composed of various modules to access your hardware:
+* pygame is a library composed of various modules to access hardware:
   * `display`
   * `music`
   * `key` (respond to key input)
@@ -12,7 +12,7 @@
 * pygame classes:
   * `Surface`
     * a pygame object for representing images
-    * defines a rectangular area on which you can draw
+    * defines a rectangular area to draw on
   * `display`
     * a window or full screen
     * this is created by using `.set_mode()`
@@ -34,7 +34,7 @@
   * `pygame.init()` (initialise pygame and all included modules, ready to work)
   * always close the game with `pygame.quit()`
   * create window: `win = pygame.display.set_mode((width, height))` => width/height values constitute a tuple, between brackets
-  * with `pygame.display.set_caption("name")` you can add a name to the game window
+  * with `pygame.display.set_caption("name")` add a name to the game window
   * pygames need a mainloop to run; the loop checks for events, collisions, mouse movements etc.; the simplest way is to use a while loop:
   ```py
   run = True
@@ -42,7 +42,7 @@
     # do something
   ```
   * an event is anything that happens from the user (click, mousemove, etc.)
-  * with `pygame.time.delay()` you can control the speed of the game
+  * control the speed of the game with `pygame.time.delay()`
   * the window's starting point is 0, 0: the top left corner of the window
   * when moving something in the window, the window has to be refreshed every time by filling it with the background color, for example black: `win.fill((0, 0))`
   * after each event, the window has to be updated: `pygame.display.update()`
@@ -87,7 +87,7 @@ if jumpCount >= -10:
 **Collision**  
 A character needs to have a hitbox around it to make collision or hitting it possible. The hitbox is created with x and y coordinates where the top left of the hitbox should be, and the width and height of the box to fit around the character.
 
-You can check if the hitbox is touched by another character, an object (like bullets), etc. by checking if this other has touched any part of the hitbox: between the coordinates plus the size of the char (width and height).
+It is possible to check if the hitbox is touched by another character, an object (like bullets), etc. by checking if this other has touched any part of the hitbox: between the coordinates plus the size of the char (width and height).
 
 **Showing text in window**  
 Variables needed with example code:
