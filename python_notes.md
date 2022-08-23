@@ -226,8 +226,8 @@ To create a button, you use the ttk.Button constructor as follows:
 **Messagebox**  
 There are various functions in the tkinter.messagebox module: 
 * `showinfo()` – notify that an operation completed successfully
-* `showerror()` – notify that an operation failed
-*
+* `showerror()` – notify that an operation was not completed due to an error
+* `showwarning()` - notify that an operation was completed but something didn’t behave as expected.
 Example:  `showinfo(title='Information', message='Download button clicked!')`
 
 

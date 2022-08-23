@@ -25,10 +25,8 @@ message = tk.Label(root, text = "Hello World!\nThis is just testing out\nA butto
 message.pack()
 # this works the same as the following:
 # tk.Label(root, text = "Hello World!\nThis is just testing out").pack()
-# button = tk.Button(root, text="Testbutton", activeforeground="red", background="black", border=5, borderwidth=15)
-# button.pack()
 
-from tkinter.messagebox import showinfo
+from tkinter.messagebox import showerror, showinfo
 # root window
 root.title('Image Button Demo')
 
@@ -37,7 +35,11 @@ def download_clicked():
     showinfo(
         title='Information',
         message='Download button clicked!'
-        )
+        ),
+    showerror(
+        title="Error message",
+        message="There was an error"
+    )
 
 download_icon = tk.PhotoImage(file='./download_icon.png')
 download_button = ttk.Button(
@@ -51,7 +53,6 @@ download_button.pack(
     ipady=5,
     expand=True
 )
-
 
 root.mainloop()
 
