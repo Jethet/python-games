@@ -212,3 +212,14 @@ And the following widgets are *new and specific to ttk*:
     Separator
     Sizegrip
     Treeview
+
+**Button**  
+Button widgets represent a clickable item in the applications. Typically, you use a text or an image to display the action that will be performed when clicked.
+
+Buttons can display text in a single font. However, the text can span multiple lines. On top of that, you can make one of the characters underline to mark a keyboard shortcut.
+
+To invoke a function or a method of a class automatically when the button is clicked, you assign its command option to the function or method. This is called the command binding in Tkinter.
+
+To create a button, you use the ttk.Button constructor as follows:  
+`button = ttk.Button(container, **option)` The most used code is: `button = ttk.Button(container, text, command)`  
+

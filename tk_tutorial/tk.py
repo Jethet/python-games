@@ -1,5 +1,6 @@
 # import Tkinter module as tk
 import tkinter as tk
+from tkinter import ttk
 from turtle import color, window_height
 
 # create an instance of the tk.Tk class => this creates the application window
@@ -24,9 +25,35 @@ message = tk.Label(root, text = "Hello World!\nThis is just testing out\nA butto
 message.pack()
 # this works the same as the following:
 # tk.Label(root, text = "Hello World!\nThis is just testing out").pack()
-button = tk.Button(root, text="Testbutton", activeforeground="red", background="black", border=5, borderwidth=15)
-button.pack()
+# button = tk.Button(root, text="Testbutton", activeforeground="red", background="black", border=5, borderwidth=15)
+# button.pack()
 
+from tkinter.messagebox import showinfo
+# root window
+root.title('Image Button Demo')
+
+# download button
+def download_clicked():
+    showinfo(
+        title='Information',
+        message='Download button clicked!'
+        )
+
+download_icon = tk.PhotoImage(file='./download_icon.png')
+download_button = ttk.Button(
+    root,
+    image=download_icon,
+    command=download_clicked
+)
+
+download_button.pack(
+    ipadx=5,
+    ipady=5,
+    expand=True
+)
+
+
+root.mainloop()
 
 # call the mainloop() method of the main window object => this keeps the window
 # visible on the screen and keeps it running until you close it (use it as last
