@@ -22,6 +22,9 @@ root.attributes("-alpha", 0.5)
 # add a component = widget
 message = tk.Label(root, text = "Hello World!\nThis is just testing out")
 message.pack()
+# this works the same as the following:
+# tk.Label(root, text = "Hello World!\nThis is just testing out").pack()
+# button = tk.Button(_Color="black")
 
 
 # call the mainloop() method of the main window object => this keeps the window
