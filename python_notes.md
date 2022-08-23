@@ -112,7 +112,7 @@ K_LEFT | left arrow
 
 **Basics**  
 * import the Tkinter module: `import tkinter as tk`
-* import the themed widgets from theTkinter module: `from tkinter import ttk`
+* import the themed widgets from the Tkinter module: `from tkinter import ttk`
 * create an instance of the tk.Tk class => this creates the application window: `root = tk.Tk()`
 * add a component (= widget) as follows: widget = WidgetName(container, **options):
     * `container` is parent window/frame to place the widget
