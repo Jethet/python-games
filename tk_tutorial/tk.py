@@ -24,7 +24,7 @@ message = tk.Label(root, text = "Hello World!\nThis is just testing out\nA butto
 message.pack()
 # this works the same as the following:
 # tk.Label(root, text = "Hello World!\nThis is just testing out").pack()
-button = tk.Button(root, activeforeground="red", background="black", border=5, borderwidth=15)
+button = tk.Button(root, text="Testbutton", activeforeground="red", background="black", border=5, borderwidth=15)
 button.pack()
 
 
