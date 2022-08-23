@@ -155,6 +155,7 @@ Text | Allows user to edit multiline text and format the way it has to be displa
     * example: +50 as x means the left edge of the window is 50 pixels from the left edge of the screen; -50 means the right edge is 50 pixels from the right edge of the screen
 * prevent the window from resizing with the `window.resizable(width, height)` method: `root.resizable(false, false)`
 * if window is resizable, specify minimum and maximum sizes with `window.minsize(min_width, min_height)` and `window.maxsize(max_width, max_height)` methods
+* for *background color*, use `root.configure(background="yellow)`
 * for *transparency*, use `("-alpha)"`: from 0.0 (fully transparent) to 1.0 (fully opaque). Example: `root.attributes("-alpha", 0.5)`
 * *window stacking order:* the order of windows placed on the screen, from bottom to top. The closer window is on the top of the stack and overlaps the one lower.
     * to place a window always at the top, use `window.attributes("-topmost", 1)`
@@ -213,6 +214,22 @@ And the following widgets are *new and specific to ttk*:
     Sizegrip
     Treeview
 
+Ttk widgets provide you with three ways to set options:
+1. Use keyword arguments at widget creation: `ttk.Label(root, text='Hi, there').pack()`
+2. Use a dictionary index after widget creation:
+```py
+label = ttk.Label(root)
+label['text'] = 'Hi, there'
+label.pack()
+```
+3. Use the config() method with keyword attributes:
+```py
+label = ttk.Label(root)
+label.config(text='Hi, there')
+label.pack()
+```
+
+
 **Button**  
 Button widgets represent a clickable item in the applications. Typically, you use a text or an image to display the action that will be performed when clicked.
 
@@ -224,7 +241,7 @@ To create a button, you use the ttk.Button constructor as follows:
 `button = ttk.Button(container, **option)` The most used code is: `button = ttk.Button(container, text, command)`  
 
 **Messagebox**  
-There are various functions in the tkinter.messagebox module: 
+The messagebox module makes it possible to show window alerts. There are various functions in the tkinter.messagebox module: 
 * `showinfo()` – notify that an operation completed successfully
 * `showerror()` – notify that an operation was not completed due to an error
 * `showwarning()` - notify that an operation was completed but something didn’t behave as expected.

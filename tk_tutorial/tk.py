@@ -5,6 +5,7 @@ from turtle import color, window_height
 
 # create an instance of the tk.Tk class => this creates the application window
 root = tk.Tk()
+root.config(background="yellow")
 root.title("First tutorial with Tkinter")
 # root.geometry("600x400-30+150")
 
