@@ -49,6 +49,8 @@ download_icon = tk.PhotoImage(file='./download_icon.png')
 download_button = ttk.Button(
     root,
     image=download_icon,
+    text="Download",
+    compound=tk.LEFT,
     command=download_clicked
 )
 
@@ -57,6 +59,9 @@ download_button.pack(
     ipady=5,
     expand=True
 )
+
+text = tk.StringVar()
+textbox = ttk.Entry(root, textvariable=text)
 
 root.mainloop()
 

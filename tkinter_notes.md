@@ -121,6 +121,7 @@ label.config(text='Hi, there')
 label.pack()
 ```
 
+## ttk widgets
 
 **Button**  
 Button widgets represent a clickable item in the applications. Typically, you use a text or an image to display the action that will be performed when clicked.
@@ -137,7 +138,40 @@ def download_clicked():
 ```
 
 To create a button, you use the ttk.Button constructor as follows:  
-`button = ttk.Button(container, **option)` The most used code is: `button = ttk.Button(container, text, command)`  
+`button = ttk.Button(container, **option)` The most used code is: `button = ttk.Button(container, text, command)`. Example:  
+```py
+download_button = ttk.Button(
+    root,
+    image=download_icon,
+    text="Download",
+    compound=tk.LEFT,
+    command=download_clicked
+)
+```
+
+To display both text AND image on a button, you need to use the compound option. If you don’t, the button will display the text only, not the image. Example: `compound=tk.LEFT`. You can use LEFT, RIGHT, TOP, BOTTOM, etc.
+
+**Entry**  
+The Entry widget allows you to **enter** a single-line text in a textbox. For *multi-line* text, use the Text widget.
+
+To create a textbox, you use: `textbox = ttk.Entry(container, **options)`. The `container` is the parent frame/window where the widget is placed. The `options` is one or more keyword arguments used to configure the Entry widget.
+
+Normally, the current value of the textbox is linked with a String/Var object like this:  
+```py
+text = tk.StringVar()
+textbox = ttk.Entry(root, textvariable=text)
+```
+* First, create a new instance of the StringVar class. The text will be the value holder for a string variable (whatever is entered).
+* Second, assign the text variable to the textvariable of the Entry widget.
+* You get the value that is entered by using `text.get()`
+
+You can place move the **focus** to the first Entry widget after the window appears. Once the Entry widget has focus, it’s ready to accept the user input. To do it, you use the `focus()` method of the Entry widget like this: `textbox.focus()`.
+
+
+
+
+
+
 
 **Messagebox**  
 The messagebox module makes it possible to show window alerts. There are various functions in the tkinter.messagebox module: 
