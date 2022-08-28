@@ -60,9 +60,6 @@ download_button.pack(
     expand=True
 )
 
-text = tk.StringVar()
-textbox = ttk.Entry(root, textvariable=text)
-
 root.mainloop()
 
 # call the mainloop() method of the main window object => this keeps the window
