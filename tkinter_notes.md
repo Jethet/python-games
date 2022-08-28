@@ -11,6 +11,7 @@ Tkinter is the built-in Python module that is used to create GUI (graphical user
     * `options` is keyword/s argument/s that specify configuration of the widget
     * example: `message = tk.Label(root, text = "Hello World!")` => this creates a `label` widget that is placed on the `root` window
 * to make the label visible, use the `pack()` method: `message.pack()`
+---
 
 Widgets | Description
 ------- | -----------
@@ -167,10 +168,16 @@ textbox = ttk.Entry(root, textvariable=text)
 
 You can place move the **focus** to the first Entry widget after the window appears. Once the Entry widget has focus, it’s ready to accept the user input. To do it, you use the `focus()` method of the Entry widget like this: `textbox.focus()`.
 
-
-
-
-
+To hide **sensitive information** on the Entry widget e.g., a password, you can use the show option. The following creates a password entry. When you enter a password, it doesn’t show the actual characters but the asterisks (*) specified in the show option:  
+```py
+password = tk.StringVar()
+password_entry = ttk.Entry(
+    root,
+    textvariable=password,
+    show='*'
+)
+password_entry.pack()
+``
 
 
 **Messagebox**  
