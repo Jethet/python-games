@@ -127,7 +127,14 @@ Button widgets represent a clickable item in the applications. Typically, you us
 
 Buttons can display text in a single font. However, the text can span multiple lines. On top of that, you can make one of the characters underline to mark a keyboard shortcut.
 
-To invoke a function or a method of a class automatically when the button is clicked, you assign its command option to the function or method. This is called the command binding in Tkinter. For example: `def download_clicked():`
+To invoke a function or a method of a class automatically when the button is clicked, you assign its command option to the function or method. This is called the command binding in Tkinter. For example:  
+```py
+def download_clicked():
+    showinfo(
+        title='Information',
+        message='Download button clicked!'
+        )
+```
 
 To create a button, you use the ttk.Button constructor as follows:  
 `button = ttk.Button(container, **option)` The most used code is: `button = ttk.Button(container, text, command)`  
