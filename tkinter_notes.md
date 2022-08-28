@@ -1,5 +1,7 @@
 ## Tkinter
 
+Tkinter is the built-in Python module that is used to create GUI (graphical user interface) applications. It is one of the most commonly used modules for creating GUI applications in Python as it is simple and easy to work with. The Tkinter module comes with Python. It gives an object-oriented interface to the Tk GUI toolkit.
+
 **Basics**  
 * import the Tkinter module: `import tkinter as tk`
 * import the themed widgets from the Tkinter module: `from tkinter import ttk`

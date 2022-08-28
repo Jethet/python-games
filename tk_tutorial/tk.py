@@ -10,8 +10,8 @@ root.title("First tutorial with Tkinter")
 # root.geometry("600x400-30+150")
 
 # TO CENTER THE WINDOW ON A SCREEN:
-window_width = 400
-window_height = 300
+window_width = 700
+window_height = 400
 # get dimensions of the screen with the winfo_ method:
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
@@ -26,6 +26,9 @@ message = tk.Label(root, text = "Hello World!\nThis is just testing out\nA butto
 message.pack()
 # this works the same as the following:
 # tk.Label(root, text = "Hello World!\nThis is just testing out").pack()
+
+info_message = tk.Label(root, text = "This is something I am learning and it's been a while since I have been coding in Python ;-)")
+info_message.pack()
 
 from tkinter.messagebox import showerror, showinfo
 # root window
