@@ -177,7 +177,17 @@ password_entry = ttk.Entry(
     show='*'
 )
 password_entry.pack()
-``
+```
+
+**Frame**  
+A frame is a widget that displays as a simple rectangle. Typically, you use a frame to organize other widgets both visually and at the coding level.
+
+To create a frame, use the ttk.Frame class: `frame = ttk.Frame(container, **options)`  
+
+* **frame size**: the frame takes on the size of its content (the size and layout of the widgets it contains)
+* set the frame size: `frame = ttk.Frame(container, height, width)`
+* **padding**: add extra space (in pixels) around the inside of the frame, any side that is required with `frame['padding'] = (left, top, right, bottom)`
+* 
 
 
 **Messagebox**  

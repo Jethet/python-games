@@ -5,7 +5,7 @@ from turtle import color, window_height
 
 # create an instance of the tk.Tk class => this creates the application window
 root = tk.Tk()
-root.config(background="yellow")
+root.config(background="lightblue")
 root.title("First tutorial with Tkinter")
 # root.geometry("600x400-30+150")
 
@@ -59,8 +59,6 @@ download_button.pack(
     ipady=5,
     expand=True
 )
-
-root.mainloop()
 
 # call the mainloop() method of the main window object => this keeps the window
 # visible on the screen and keeps it running until you close it (use it as last
