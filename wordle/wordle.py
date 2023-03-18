@@ -20,7 +20,7 @@ def game(word):
 
         if guess == word:
             guessNumber = 5
-            print(f"{green}","Correct!")
+            print(f"{green}","Correct! The word is", word)
 
         if guess != word:
             for x in guess:
@@ -35,10 +35,10 @@ def game(word):
                                 print(f"{blue}", x)
                 else:
                     print(f"{red}", x)
-                    
-            if guessNumber == 5:
-                print("Game over!")
-
             guessNumber += 1
+        
+        if guessNumber == 5:
+            print("Game over! The word is", word)
+
 
 game(randomWord())
