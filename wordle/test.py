@@ -15,7 +15,6 @@ reset = "\033[0m"
 # def game(randWord):
 
 word = "maker"
-guess = "table"
 
 def game(word):
     guessNumber = 0
@@ -23,23 +22,27 @@ def game(word):
     while guessNumber < 5:
         guess = input("Please enter your word: ")
 
-        for x in guess:
-            if x in word:
-                indexGuessChar = [i for i, b in enumerate(guess) if b == x]
-                indexWordChar = [i for i, a in enumerate(word) if a == x]
-                for b in indexGuessChar:
-                    for a in indexWordChar:
-                        if b == a:
-                            print(f"{green}", x)
-                        elif b != a:
-                            print(f"{blue}", x)
-            else:
-                print(f"{red}", x)
+        if guess == word:
+            guessNumber = 5
+            print(f"{green}","Correct!")
 
-        guessNumber += 1
+        if guess != word:
+            for x in guess:
+                if x in word:
+                    indexGuessChar = [i for i, b in enumerate(guess) if b == x]
+                    indexWordChar = [i for i, a in enumerate(word) if a == x]
+                    for b in indexGuessChar:
+                        for a in indexWordChar:
+                            if b == a:
+                                print(f"{green}", x)
+                            elif b != a:
+                                print(f"{blue}", x)
+                else:
+                    print(f"{red}", x)
 
-        print(word)
-        print(guessNumber)
+            guessNumber += 1
 
+        # print(word)
+        # print(guessNumber)
 
 game(word)
