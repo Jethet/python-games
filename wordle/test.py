@@ -42,6 +42,8 @@ def game(word):
 
             guessNumber += 1
 
+            if guessNumber == 5:
+                print("Sorry, you have no more guesses left.")
         # print(word)
         # print(guessNumber)
 
