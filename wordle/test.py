@@ -36,11 +36,11 @@ def game(word):
                             if b == a:
                                 continue
                             print(f"{green}", x)
-                    for b in indexGuessChar:
-                        for a in indexWordChar:
-                            if b != a:
-                                continue
-                            print(f"{blue}", x)
+                        for b in indexGuessChar:
+                            for a in indexWordChar:
+                                if b != a:
+                                    continue
+                                print(f"{blue}", x)
                 else:
                     print(f"{red}", x)
 
