@@ -14,7 +14,7 @@ reset = "\033[0m"
 
 # def game(randWord):
 
-word = "maker"
+word = "peter"
 
 def game(word):
     guessNumber = 0
@@ -27,16 +27,22 @@ def game(word):
             print(f"{green}",word, "Correct!")
 
         if guess != word:
+            # go through each character in the guess
             for x in guess:
+                # if the character is in the goal word
                 if x in word:
+                    # find all the positions in the guess at which this character appears
                     indexGuessChar = [i for i, b in enumerate(guess) if b == x]
+                    # find all the positions in the goal word at which this character appears
                     indexWordChar = [i for i, a in enumerate(word) if a == x]
-                    for b in indexGuessChar:
-                        for a in indexWordChar:
-                            if b == a:
+                                                        # baker
+                    for guessIndex in indexGuessChar:   #    3
+                                                        # peter
+                        for wordIndex in indexWordChar: #  1 3
+                            if guessIndex == wordIndex:
                                 print(f"{green}", x)
                             
-                            if b != a and a != "{green}":
+                            if guessIndex != wordIndex and guessIndex not in indexWordChar:
                                 print(f"{blue}", x)
                 else:
                     print(f"{red}", x)
