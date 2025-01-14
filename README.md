@@ -4,4 +4,4 @@ After two years of learning Web Development with loads of JavaScript, React and 
 
 This is my first introduction to Pygame and I am amazed at how intuitive it is. My goal is to make use of some tutorials to learn about Pygame, and then try to design a game myself.
 
-I coded my own version of Wordle - and it works! Too bad that it is so hard to make an interface because Python is not really for frontend. But maybe I'll find a way.
+I coded my own version of Wordle - and it works ... well, not entirely but close! Too bad that it is so hard to make an interface but maybe I'll find a way.
